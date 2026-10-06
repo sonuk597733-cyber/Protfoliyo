@@ -8,50 +8,51 @@ const Career = () => {
           My career <span>&</span>
           <br /> experience
         </h2>
+
         <div className="career-info">
           <div className="career-timeline">
             <div className="career-dot"></div>
           </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
+                <h4>Diploma in Computer Science</h4>
               </div>
-              <h3>20XX</h3>
+              <h3>2024</h3>
             </div>
+
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
+              Started my journey in Computer Science with a focus on
+              programming, web development, and problem solving.
             </p>
           </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
+                <h4>Web Development</h4>
               </div>
-              <h3>20XX</h3>
+              <h3>2025</h3>
             </div>
+
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
+              Built practical projects and developed skills in HTML, CSS,
+              JavaScript, Node.js, Express.js, MongoDB, and REST APIs.
             </p>
           </div>
+
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">
-                <h4>Position In Company</h4>
-                <h5>Company Name</h5>
+                <h4>MERN Stack Development</h4>
               </div>
               <h3>NOW</h3>
             </div>
+
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-              labore sit non ipsum temporibus quidem, deserunt eaque officiis
-              mollitia ratione suscipit repellat.
+              Currently learning React and strengthening my full-stack
+              development skills by building practical projects.
             </p>
           </div>
         </div>

@@ -4,9 +4,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const WhatIDo = () => {
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
+
   const setRef = (el: HTMLDivElement | null, index: number) => {
     containerRef.current[index] = el;
   };
+
   useEffect(() => {
     if (ScrollTrigger.isTouch) {
       containerRef.current.forEach((container) => {
@@ -16,14 +18,18 @@ const WhatIDo = () => {
         }
       });
     }
+
     return () => {
       containerRef.current.forEach((container) => {
         if (container) {
-          container.removeEventListener("click", () => handleClick(container));
+          container.removeEventListener("click", () =>
+            handleClick(container)
+          );
         }
       });
     };
   }, []);
+
   return (
     <div className="whatIDO">
       <div className="what-box">
@@ -34,8 +40,10 @@ const WhatIDo = () => {
           </div>
         </h2>
       </div>
+
       <div className="what-box">
         <div className="what-box-in">
+
           <div className="what-border2">
             <svg width="100%">
               <line
@@ -47,6 +55,7 @@ const WhatIDo = () => {
                 strokeWidth="2"
                 strokeDasharray="7,7"
               />
+
               <line
                 x1="100%"
                 y1="0"
@@ -58,6 +67,8 @@ const WhatIDo = () => {
               />
             </svg>
           </div>
+
+          {/* FRONTEND */}
           <div
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 0)}
@@ -73,6 +84,7 @@ const WhatIDo = () => {
                   strokeWidth="2"
                   strokeDasharray="6,6"
                 />
+
                 <line
                   x1="0"
                   y1="100%"
@@ -84,31 +96,38 @@ const WhatIDo = () => {
                 />
               </svg>
             </div>
+
             <div className="what-corner"></div>
 
             <div className="what-content-in">
-              <h3>DEVELOP</h3>
+              <h3>FRONTEND</h3>
+
               <h4>Description</h4>
+
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                quia aliquid laboriosam ducimus sit molestiae.
+                I build responsive and interactive web interfaces using
+                modern frontend technologies and focus on creating clean
+                user experiences.
               </p>
+
               <h5>Skillset & tools</h5>
+
               <div className="what-content-flex">
+                <div className="what-tags">HTML</div>
+                <div className="what-tags">CSS</div>
                 <div className="what-tags">JavaScript</div>
-                <div className="what-tags">TypeScript</div>
-                <div className="what-tags">Three.js</div>
+                <div className="what-tags">BootStrap</div>
                 <div className="what-tags">React</div>
-                <div className="what-tags">Css</div>
-                <div className="what-tags">Node.js</div>
-                <div className="what-tags">Next.js</div>
-                <div className="what-tags">Express.js</div>
-                <div className="what-tags">PHP</div>
-                <div className="what-tags">MySql</div>
+                <div className="what-tags">TypeScript</div>
+                <div className="what-tags">Git</div>
+                <div className="what-tags">GitHub</div>
               </div>
+
               <div className="what-arrow"></div>
             </div>
           </div>
+
+          {/* BACKEND */}
           <div
             className="what-content what-noTouch"
             ref={(el) => setRef(el, 1)}
@@ -126,28 +145,34 @@ const WhatIDo = () => {
                 />
               </svg>
             </div>
+
             <div className="what-corner"></div>
+
             <div className="what-content-in">
-              <h3>DESIGN</h3>
+              <h3>BACKEND</h3>
+
               <h4>Description</h4>
+
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                quia aliquid laboriosam ducimus sit molestiae
+                I develop server-side applications and REST APIs using
+                Node.js and Express.js with MongoDB for database management.
               </p>
+
               <h5>Skillset & tools</h5>
+
               <div className="what-content-flex">
-                <div className="what-tags">Blender</div>
-                <div className="what-tags">Zbrush</div>
-                <div className="what-tags">UI Design</div>
-                <div className="what-tags">Motion</div>
-                <div className="what-tags">Rigging</div>
-                <div className="what-tags">3D Animation</div>
-                <div className="what-tags">Character Design</div>
-                <div className="what-tags">Modelling</div>
+                <div className="what-tags">Node.js</div>
+                <div className="what-tags">Express.js</div>
+                <div className="what-tags">MongoDB</div>
+                <div className="what-tags">Mongoose</div>
+                <div className="what-tags">REST API</div>
+                <div className="what-tags">Deployment</div>
               </div>
+
               <div className="what-arrow"></div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -159,6 +184,7 @@ export default WhatIDo;
 function handleClick(container: HTMLDivElement) {
   container.classList.toggle("what-content-active");
   container.classList.remove("what-sibling");
+
   if (container.parentElement) {
     const siblings = Array.from(container.parentElement.children);
 

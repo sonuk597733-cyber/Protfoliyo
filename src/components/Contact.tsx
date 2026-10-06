@@ -11,20 +11,20 @@ const Contact = () => {
             <h4>Email</h4>
             <p>
               <a href="mailto:example@mail.com" data-cursor="disable">
-                example@mail.com
+                sonuk597733@mail.com
               </a>
             </p>
             <h4>Phone</h4>
             <p>
               <a href="tel:+9199999999" data-cursor="disable">
-                +91 99999 99999
+                +91 9942536861
               </a>
             </p>
           </div>
           <div className="contact-box">
             <h4>Social</h4>
             <a
-              href="https://github.com"
+              href="https://github.com/sonuk597733-cyber"
               target="_blank"
               data-cursor="disable"
               className="contact-social"
@@ -32,7 +32,7 @@ const Contact = () => {
               Github <MdArrowOutward />
             </a>
             <a
-              href="https://www.linkedin.com"
+              href="www.linkedin.com/in/sonukumar-codes"
               target="_blank"
               data-cursor="disable"
               className="contact-social"
@@ -40,15 +40,15 @@ const Contact = () => {
               Linkedin <MdArrowOutward />
             </a>
             <a
-              href="https://x.com"
+              href="https://wa.me/919942536861"
               target="_blank"
               data-cursor="disable"
               className="contact-social"
             >
-              Twitter <MdArrowOutward />
+              WhatsApp <MdArrowOutward />
             </a>
             <a
-              href="https://www.instagram.com"
+              href="https://www.instagram.com/sonu_kumar994253"
               target="_blank"
               data-cursor="disable"
               className="contact-social"
@@ -58,10 +58,10 @@ const Contact = () => {
           </div>
           <div className="contact-box">
             <h2>
-              Designed and Developed <br /> by <span>Moncy Yohannan</span>
+              Designed and Developed <br /> by <span>Sonu kumar...</span>
             </h2>
             <h5>
-              <MdCopyright /> 2024
+              <MdCopyright /> 2025
             </h5>
           </div>
         </div>

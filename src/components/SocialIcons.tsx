@@ -6,22 +6,59 @@ import {
 } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import HoverLinks from "./HoverLinks";
 
 const SocialIcons = () => {
+  const [showIcons, setShowIcons] = useState(false);
+
+  // Contact section visible hone par icons show honge
+  useEffect(() => {
+    const contact = document.getElementById("contact");
+
+    if (!contact) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowIcons(entry.isIntersecting);
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(contact);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // Social icon cursor-follow animation
   useEffect(() => {
     const social = document.getElementById("social") as HTMLElement;
+
+    if (!social) return;
+
+    const cleanupFunctions: (() => void)[] = [];
 
     social.querySelectorAll("span").forEach((item) => {
       const elem = item as HTMLElement;
       const link = elem.querySelector("a") as HTMLElement;
 
-      const rect = elem.getBoundingClientRect();
+      if (!link) return;
+
+      const getRect = () => elem.getBoundingClientRect();
+
+      let rect = getRect();
+
       let mouseX = rect.width / 2;
       let mouseY = rect.height / 2;
-      let currentX = 0;
-      let currentY = 0;
+
+      let currentX = rect.width / 2;
+      let currentY = rect.height / 2;
+
+      let animationFrame: number;
 
       const updatePosition = () => {
         currentX += (mouseX - currentX) * 0.1;
@@ -30,17 +67,26 @@ const SocialIcons = () => {
         link.style.setProperty("--siLeft", `${currentX}px`);
         link.style.setProperty("--siTop", `${currentY}px`);
 
-        requestAnimationFrame(updatePosition);
+        animationFrame = requestAnimationFrame(updatePosition);
       };
 
       const onMouseMove = (e: MouseEvent) => {
+        rect = getRect();
+
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        if (x < 40 && x > 10 && y < 40 && y > 5) {
+        // Poore 50x50 icon area me cursor follow karega
+        if (
+          x >= 0 &&
+          x <= rect.width &&
+          y >= 0 &&
+          y <= rect.height
+        ) {
           mouseX = x;
           mouseY = y;
         } else {
+          // Cursor bahar jaate hi center me return
           mouseX = rect.width / 2;
           mouseY = rect.height / 2;
         }
@@ -50,38 +96,71 @@ const SocialIcons = () => {
 
       updatePosition();
 
-      return () => {
-        elem.removeEventListener("mousemove", onMouseMove);
-      };
+      cleanupFunctions.push(() => {
+        document.removeEventListener("mousemove", onMouseMove);
+        cancelAnimationFrame(animationFrame);
+      });
     });
+
+    return () => {
+      cleanupFunctions.forEach((cleanup) => cleanup());
+    };
   }, []);
 
   return (
     <div className="icons-section">
-      <div className="social-icons" data-cursor="icons" id="social">
+      <div
+        className="social-icons"
+        data-cursor="icons"
+        id="social"
+        style={{
+          display: showIcons ? "flex" : "none",
+        }}
+      >
         <span>
-          <a href="https://github.com" target="_blank">
+          <a
+            href="https://github.com/sonuk597733-cyber"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaGithub />
           </a>
         </span>
+
         <span>
-          <a href="https://www.linkedin.com" target="_blank">
+          <a
+            href="www.linkedin.com/in/sonukumar-codes"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaLinkedinIn />
           </a>
         </span>
+
         <span>
-          <a href="https://x.com" target="_blank">
+          <a
+            href="https://wa.me/919942536861"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaXTwitter />
           </a>
         </span>
+
         <span>
-          <a href="https://www.instagram.com" target="_blank">
+          <a
+            href="https://www.instagram.com/sonu_kumar994253"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaInstagram />
           </a>
         </span>
       </div>
+
       <a className="resume-button" href="#">
         <HoverLinks text="RESUME" />
+
         <span>
           <TbNotes />
         </span>
